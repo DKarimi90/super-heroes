@@ -5,12 +5,11 @@ class HeroPowersController < ApplicationController
     #POST/hero_powers
     def create 
         hero_power = HeroPower.create!(hero_power_params)
-        render json: hero_power
-        # if hero_power.valid?
-        #     render json: hero_power, status: :created
-        # else 
-        #     render json: { errors: "validation errors"}, status: :uprocessable_entity
-        # end
+        if hero_power.valid?
+            render json: hero_power, status: :created
+        else 
+            render json: { errors: "validation errors"}, status: :uprocessable_entity
+        end
 
     end
 
